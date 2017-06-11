@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue-learning</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <form action="" id="formContainer"></form>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        var FormVm = new Vue({
+            el : "formContainer",
+            data :function(){
+                return {
+                    msg : "Hello World!"
+                }
+            },
+            template : function(){
+                var html = "";
+                html += '<input v-model="msg" type="text"/>';
+                html += '<p>{{msg}}</p>';
+                return html;
+            }
+        })
+    
+    </script>
+  </body>
+</html>
