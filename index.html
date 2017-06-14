@@ -3,27 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>vue-learning</title>
+    <style type="text/css">
+        input[type=text]{ width: 200px; height: 22px; line-height: 22px; padding: 6px 8px; border: 1px solid #e5e5e5;
+            box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+            outline: none
+        }
+    </style>
   </head>
-  <body>
-    <div id="app"></div>
-    <form action="" id="formContainer"></form>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script type="text/javascript">
-        var FormVm = new Vue({
-            el : "formContainer",
-            data :function(){
-                return {
-                    msg : "Hello World!"
-                }
-            },
-            template : function(){
-                var html = "";
-                html += '<input v-model="msg" type="text"/>';
-                html += '<p>{{msg}}</p>';
-                return html;
-            }
-        })
-    
-    </script>
+  <body style="padding:50px;">
+    <div id="app">
+        <p>您刚才输入了：{{message}}</p>
+        <input type="text" v-model="message">
+    </div>
   </body>
 </html>
