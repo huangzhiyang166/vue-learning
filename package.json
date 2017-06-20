@@ -2,7 +2,11 @@
   "name": "vue-learning",
   "version": "1.0.0",
   "description": "A Vue.js project",
+<<<<<<< HEAD
   "author": "huangzhiyang <348845730@qq.com>",
+=======
+  "author": "",
+>>>>>>> c3959286a3d7eedc08f1cbcb72f6edb0101c58f7
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -12,6 +16,10 @@
     "test": "npm run unit"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "element-ui": "^1.3.6",
+>>>>>>> c3959286a3d7eedc08f1cbcb72f6edb0101c58f7
     "vue": "^2.3.3",
     "vue-router": "^2.3.1"
   },
