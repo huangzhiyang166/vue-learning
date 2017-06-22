@@ -49,15 +49,51 @@
 						<small>Share by <a href="###">huangzhiyang</a> / <a href="https://github.com/huangzhiyang166/">github</a></small>
 					</p>
 				</section>
+				<section class="al">
+					<img data-src="./image/1.png">
+					<p class="fragment al">1、MVVM双向数据绑定</p>
+					<p class="fragment al">2、组件化</p>
+					<p class="fragment al">3、集成状态管理、路由的单页应用</p>
+					<p class="fragment al">4、周边生态、活跃的社区</p>
+				</section>
 				<section>
-					<section class="al">
-						<img data-src="./image/1.png">
-						<p class="fragment al">1、MVVM双向数据绑定</p>
-						<p class="fragment al">2、组件化</p>
-					</section>
+					<img data-src="./image/5.png">
+				</section>
+				<section>
 					<section>
+						<p class="al">1、MVVM双向数据绑定</p>
 						<img data-src="./image/2.png" alt="">
 						<img data-src="./image/3.png" alt="">
+					</section>
+					<section class="al">
+						<p class="al">数据绑定的2种方式</p>
+						<p class="fragment al">1、{{ }}声明式渲染</p>
+						<p class="fragment al">2、指令</p>
+					</section>
+					<section>
+						<pre><code class="html" data-trim contenteditable style="font-size: 18px;">
+<div id="app">
+  <p>您刚才输入了：{{message}}</p>
+  <input v-bind:msg="message" type="text" v-model="message">
+  <input v-bind:msg="{{message}}" type="text" v-model="message">
+  <input :msg="{{message}}" type="text" v-model="message">
+  <input msg="{{message}}" type="text" v-model="message">
+  <input msg="message" type="text" v-model="message">
+</div>
+				</code></pre>
+				<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+new Vue({
+  data : {
+	return{
+	  message : "hello world!!"
+	}
+  }
+})
+				</code></pre>
+					</section>
+					<section>
+						<div class="al">{{ }}：用于绑定数据到dom的文本节点</div>
+						<div class="al" style="margin-top:20px">指令：不限于文本节点，使dom具备特定行为能力</div>
 					</section>
 				</section>
 				

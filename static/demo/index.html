@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue-learning</title>
+    <style type="text/css">
+        input[type=text]{ width: 200px; height: 22px; line-height: 22px; padding: 6px 8px; border: 1px solid #e5e5e5;
+            box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+            outline: none
+        }
+    </style>
+  </head>
+  <body style="padding:50px;">
+    <div id="app">
+      <p>您刚才输入了：{{message}}</p>
+      <input v-bind:msg="message" type="text" v-model="message">
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+          el : "#app",                    //挂载元素
+          data : function(){
+              return{                     //数据
+                  message : "hello world"
+              }
+          },
+          template : '',                  //html模板
+          computed : {},                  //计算属性
+          watch : {},                     //watcher
+          components : {},                //组件体系
+          directives : {},                //自定义指令
+          filters : {},                   //过滤器  
+          mixins : [],                    //方法混入
+          methods : {},                   //实例方法
+
+          //以下为整个vue实例的生命周期函数
+          beforeCreate : function(){},    //在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用
+          created : function(){},         //实例已完数据观测(data observer)，属性和方法的运算，但还没挂载到el元素上
+          beforeMount : function(){},     //挂载到el元素之前
+          mounted : function(){},         //挂载到el元素后，可以访问到真实dom节点了
+          beforeUpdate : function(){},    //数据更新前
+          updated : function(){},         //数据更新完成
+          activated : function(){},       //keep-alive 组件激活时调用
+          deactivated : function(){},     //keep-alive 组件停用时调用
+          beforeDestroy : function(){},   //实例销毁之前调用
+          destroyed : function(){}        //销毁后
+      });
+    </script>
+  </body>
+</html>
