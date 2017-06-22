@@ -1,13 +1,20 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+  <div>
+    <counter :count="count"></counter>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data :function(){
+    return{
+      count : "5"
+    }
+  },
+  components : {
+    counter : require("./components/counter.vue")
+  }
 }
 </script>
 

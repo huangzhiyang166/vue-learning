@@ -1,11 +1,5 @@
 <template>
   <div class="hello">
-<<<<<<< HEAD
-=======
-
-    <el-input :value="msg"></el-input>
-
->>>>>>> c3959286a3d7eedc08f1cbcb72f6edb0101c58f7
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -27,22 +21,12 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-=======
-import {Input} from "element-ui";
->>>>>>> c3959286a3d7eedc08f1cbcb72f6edb0101c58f7
 export default {
   name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-<<<<<<< HEAD
-=======
-  },
-  components : {
-    "elInput" : Input
->>>>>>> c3959286a3d7eedc08f1cbcb72f6edb0101c58f7
   }
 }
 </script>
