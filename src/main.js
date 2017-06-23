@@ -7,8 +7,10 @@
 // import router from './router'
 // Vue.config.productionTip = false;
 
-import App from './App'
+
+import "./assets/css/global.scss";
 import Vue from "vue";
+import App from './App'
 new Vue({
   el: '#app',
   template: '<App/>',

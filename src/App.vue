@@ -1,19 +1,37 @@
 <template>
   <div>
-    <counter :count="count"></counter>
+      <ticket-item v-for="item in ticketList" :info="item" :key="item.index"></ticket-item>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  data :function(){
+  data(){
     return{
-      count : "5"
+        ticketList : [{
+          buy_low : 3,
+          buy_up : 10,
+          title : "测试title测试title测试title测试title测试title",
+          jsprice : 0.01,
+          tprice : 0.02,
+          storage : -1,
+          index : 0
+        },{
+          buy_low : 4,
+          buy_up : 10,
+          title : "测试title2222",
+          jsprice : 0.01,
+          tprice : 0.02,
+          storage : -1,
+          index : 1
+        }]
     }
   },
+  methods : {
+    
+  },
   components : {
-    counter : require("./components/counter.vue")
+    ticketItem : require("./components/ticket-item.vue")
   }
 }
 </script>
