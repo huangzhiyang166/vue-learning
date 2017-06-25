@@ -71,6 +71,13 @@
 						<p class="fragment al">2、指令</p>
 					</section>
 					<section>
+						<p class="al">组件通信的几种方式：</p>
+						<p class="fragment al">1、父组件通过prop传递数据到子组件</p>
+						<p class="fragment al">2、子组件通过自定义事件向父组件emit消息（小插曲sync）</p>
+						<p class="fragment al">3、使用一个空的vue实例作为中央事件总线(PubSub模式)</p>
+						<p class="fragment al">4、vuex状态管理器</p>
+					</section>
+					<section>
 						<pre><code class="html" data-trim contenteditable style="font-size: 18px;">
 <div id="app">
   <p>您刚才输入了：{{message}}</p>
