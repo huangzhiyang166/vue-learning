@@ -1,0 +1,22 @@
+input[type=text],
+input[type=password],
+input[type=number],
+select,textarea
+{ 
+    width: 200px; height: 22px; line-height: 22px; padding: 6px 8px; border: 1px solid #e5e5e5;
+    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+    outline: none
+}
+body{ background: #f0f3f5}
+
+.priceBox{
+    color: #f07845;
+    .yen{ font-size: 12px; margin-right: 1px;}
+    .num{ font-size: 16px;}
+    &.through{
+        color: #999;
+        margin-left: 10px;
+        .num{ font-size: 14px;}
+        text-decoration: line-through
+    }
+}

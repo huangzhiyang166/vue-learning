@@ -1,0 +1,1 @@
+export const bookInfo = require("./bookInfo");
