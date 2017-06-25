@@ -7,13 +7,18 @@
       </div>
       <template v-if="!isLoading">
         <ticket-item v-for="item in ticketList" :info="item" :key="item.index"></ticket-item>
-        <div class="totalMoneyBar">
-          总价：<span class="money"><i class="yen">&yen;</i><em class="num">{{totalMoney}}</em></span>
-        </div>
       </template>
       <template v-else>
         <div style="height:300px; line-height:300px; text-align:center; color:#999">努力加载中...</div>
       </template>
+      <div class="footBar">
+        <div class="con">
+          <div class="pr">
+            总价：<span class="priceBox"><i class="yen">&yen;</i><em class="num">{{totalMoney}}</em></span>
+          </div>
+          <a @click="onSubmitBtnClick" href="###" id="submitBtn" class="submitBtn">提交订单</a>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -109,6 +114,9 @@ export default {
           Vue.set(this.ticketList,index,Object.assign({},ticket,item));
         })
       })
+    },
+    onSubmitBtnClick : function(e){
+      console.log(this.ticketList);
     }
   },
   components : {
@@ -118,6 +126,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./assets/css/global.scss";
 @import "./assets/css/flex";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -141,6 +150,31 @@ export default {
     line-height: 1.7
   }
 
+}
+.footBar{
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 -1px 1px rgba(0,0,0,0.1);
+  .con{
+    @include flexbox;
+    .pr{ height: 45px; line-height: 45px; padding-left: 15px;}
+    .submitBtn{
+      display: block;
+      height: 45px;
+      line-height: 45px;
+      flex:none;
+      align-self: center;
+      margin-left: auto;
+      padding: 0 20px 0 20px;
+      color: #fff;
+      background: orangered
+    }
+  }
+  
 }
 
 </style>

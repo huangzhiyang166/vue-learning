@@ -8,7 +8,6 @@
 // Vue.config.productionTip = false;
 
 
-import "./assets/css/global.scss";
 import Vue from "vue";
 import App from './App'
 new Vue({
