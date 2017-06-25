@@ -36,6 +36,9 @@ export default {
     data(){
         return{}
     },
+    created : function(){
+        
+    },
     computed : {
         max : function(){
             let {buy_low,buy_up,storage,index} = this.info;

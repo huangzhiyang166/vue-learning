@@ -26,7 +26,9 @@
 import Vue from "vue";
 import axios from "axios";
 import { bookInfo } from "./adaptor";
+import Store from "./store";
 export default {
+  store : Store,
   data(){
     return{
         changes : [
