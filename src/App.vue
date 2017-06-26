@@ -5,7 +5,7 @@
           <div v-for="(item,idx) in group" :index="index" :key="idx" :storage="item.storage" :price="item.jsprice" class="line">库存：{{item.storage}} 价格：{{item.jsprice}}</div>
         </div>
       </div>
-      <template v-if="!isLoading">
+      <template v-if="!isGetBookInfoLoading">
         <ticket-item v-for="item in ticketList" :info="item" :key="item.index"></ticket-item>
       </template>
       <template v-else>
@@ -24,6 +24,7 @@
 
 <script>
 import Vue from "vue";
+import {mapState,mapGetters} from "vuex";
 import axios from "axios";
 import { bookInfo } from "./adaptor";
 import Store from "./store";
@@ -31,94 +32,24 @@ export default {
   store : Store,
   data(){
     return{
-        changes : [
-          [{
-            storage : 5,
-            jsprice : 3
-          },{
-            storage : -1,
-            jsprice : 5
-          },{
-            storage : 0,
-            jsprice : 10
-          }],[{
-            storage : 10,
-            jsprice : 6
-          },{
-            storage : 3,
-            jsprice : 4
-          },{
-            storage : -1,
-            jsprice : 8
-          }],[{
-            storage : -1,
-            jsprice : 12
-          },{
-            storage : 0,
-            jsprice : 7
-          },{
-            storage : 20,
-            jsprice : 1
-          }]
-        ],
-        isLoading : true,
-        ticketList : []
+        changes : this.$store.state.changes
     }
   },
   mounted :function(){
-    this.isLoading = true;
-    axios.get("/api/getBookInfo").then((res) => {
-        this.isLoading = false;
-        let o = res.data;
-        let {code,data,msg} = o;
-        if(code==200){
-          this.ticketList = bookInfo(data);
-        }else{
-          //fail
-        }
-    })
+    this.$store.dispatch("getBookInfo",{pid:1,aid:2});
   },
   computed : {
-    totalMoney : function(){
-      let ticketList = this.ticketList;
-      let total = 0;
-      ticketList.forEach((item,index)=>{
-        total += (item.count * item.jsprice);
-      })
-      return total;
-    }
+    ...mapState(["isGetBookInfoLoading","ticketList"]),
+    ...mapGetters(["totalMoney"])
   },
   methods : {
     onSwitchTriggerClick : function(e){
       let target = e.target;
       let index = target.getAttribute("index");
-      let data = this.changes[index];
-      let ticketList = this.ticketList;
-      if(!data) return false;
-      this.isLoading = true;
-      axios.post("/api/getStoragePrice",{data:data}).then((res)=>{
-        this.isLoading = false;
-        let o = res.data;
-        let data = o.data;
-        data.forEach((item,index) => {
-          let ticket = ticketList[index];
-          let count = ticket.count;
-          let old_storage = ticket.storage;
-          let storage = item.storage;
-          let buy_up = ticket.buy_up;
-          if(storage==-1){
-            item["count"] = count;
-          }else if(old_storage==-1){
-            item["count"] = Math.min(storage,buy_up);
-          }else{
-            item["count"] = Math.min(storage,buy_up);
-          }
-          Vue.set(this.ticketList,index,Object.assign({},ticket,item));
-        })
-      })
+      this.$store.dispatch("swtichStorePrice",index);
     },
     onSubmitBtnClick : function(e){
-      console.log(this.ticketList);
+      this.$store.dispatch("submitOrder",e);
     }
   },
   components : {
@@ -128,7 +59,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/css/global.scss";
 @import "./assets/css/flex";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
