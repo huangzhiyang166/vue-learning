@@ -126,7 +126,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/css/global.scss";
 @import "./assets/css/flex";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
