@@ -31,7 +31,8 @@
 		<style type="text/css">
 			#myBody .reveal .slides .pl-30{ padding-left: 30px;}
 			#myBody .reveal .slides .al{ text-align: left;}
-			#myBody .reveal .slides .desc{ font-size: 26px; line-height: 1.5}
+			#myBody .reveal .slides .desc{ font-size: 26px; line-height: 1.8}
+			#myBody .reveal .slides .f32{ font-size: 32px; line-height: 1.8}
 		</style>
 
 
@@ -94,6 +95,34 @@ new Vue({
 					<section>
 						<div class="al">{{ }}：用于绑定数据到dom的文本节点</div>
 						<div class="al" style="margin-top:20px">指令：不限于文本节点，使dom具备特定行为能力</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div class="al">组件</div>
+						<div class="fragment al desc">全局组件</div>
+						<div class="fragment al desc">局部组件</div>
+					</section>
+					<section>
+						<img class="" data-src="./image/6.png" alt="">
+					</section>
+					<section>
+						<img class="" data-src="./image/7.png" alt="">
+						<img class="" data-src="./image/8.png" alt="">
+					</section>
+					<section>
+						<img class="" data-src="./image/9.png" alt="">
+						<img class="" data-src="./image/10.png" alt="">
+					</section>
+					<section class="al">
+						<div class="al f32">组件通信</div>
+						<ul style="display:block" class="al">
+							<li class="fragment desc al">父组件通过props向子组件传递数据</li>
+							<li class="fragment desc al">子组件$emit事件向父组件通知状态</li>
+							<li class="fragment desc al"></li>
+						</ul>
+						<img class="fragment" style="height:300px;" data-src="./image/11.png" alt="">
 					</section>
 				</section>
 				
