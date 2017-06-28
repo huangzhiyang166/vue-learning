@@ -44,7 +44,7 @@ router.post("/getStoragePrice",function(req,res){
     var data = body.data;
     setTimeout(function(){
         res.send(output(200,data));
-    },1000)
+    },500)
 })
 
 

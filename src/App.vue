@@ -1,7 +1,7 @@
 <template>
   <div>
       <div class="switchCon">
-        <div v-for="(group,index) in changes" :index="index" :key="index" @click="onSwitchTriggerClick" class="box">
+        <div v-for="(group,index) in changes" :class="{selected:selectIndex==index}" :index="index" :key="index" @click="onSwitchTriggerClick" class="box">
           <div v-for="(item,idx) in group" :index="index" :key="idx" :storage="item.storage" :price="item.jsprice" class="line">库存：{{item.storage}} 价格：{{item.jsprice}}</div>
         </div>
       </div>
@@ -59,6 +59,7 @@ export default {
             jsprice : 1
           }]
         ],
+        selectIndex : -1,
         isLoading : true,
         ticketList : []
     }
@@ -93,6 +94,7 @@ export default {
       let data = this.changes[index];
       let ticketList = this.ticketList;
       if(!data) return false;
+      this.selectIndex = index;
       this.isLoading = true;
       axios.post("/api/getStoragePrice",{data:data}).then((res)=>{
         this.isLoading = false;
@@ -141,7 +143,12 @@ export default {
     background: #fff;
     padding: 10px;
     padding-right: 0;
-    line-height: 1.7
+    line-height: 1.7;
+    border: 1px solid #fff;
+    &.selected{
+      border-color: #008fc2;
+      color: #008fc2
+    }
   }
 
 }
