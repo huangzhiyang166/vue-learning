@@ -1,7 +1,7 @@
 <template>
   <div>
       <div class="switchCon">
-        <div v-for="(group,index) in changes" :index="index" :key="index" @click="onSwitchTriggerClick" class="box">
+        <div v-for="(group,index) in changes" :class="{selected:selectedIndex==index}" :index="index" :key="index" @click="onSwitchTriggerClick" class="box">
           <div v-for="(item,idx) in group" :index="index" :key="idx" :storage="item.storage" :price="item.jsprice" class="line">库存：{{item.storage}} 价格：{{item.jsprice}}</div>
         </div>
       </div>
@@ -32,6 +32,7 @@ export default {
   store : Store,
   data(){
     return{
+        selectedIndex : -1,
         changes : this.$store.state.changes
     }
   },
@@ -46,6 +47,7 @@ export default {
     onSwitchTriggerClick : function(e){
       let target = e.target;
       let index = target.getAttribute("index");
+      this.selectedIndex = index;
       this.$store.dispatch("swtichStorePrice",index);
     },
     onSubmitBtnClick : function(e){
@@ -79,7 +81,12 @@ export default {
     background: #fff;
     padding: 10px;
     padding-right: 0;
-    line-height: 1.7
+    line-height: 1.7;
+    border: 1px solid #fff;
+    &.selected{
+      border: 1px solid #008fc2;
+      color: #008fc2
+    }
   }
 
 }
