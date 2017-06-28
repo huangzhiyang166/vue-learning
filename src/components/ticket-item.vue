@@ -91,7 +91,6 @@ export default {
     .lt{ margin-right: 10px;}
     .countBox{ 
         margin-left: auto;
-        margin-right: 10px;
         align-self: center;
     }
     .tit{ font-size: 14px; line-height: 1.4; font-weight: bold}
