@@ -11,6 +11,20 @@
     </style>
   </head>
   <body style="padding:50px;">
+
+
+    <div id="app">
+        <my-child></my-child>
+    </div>
+
+
+
+
+
+
+
+
+
     <div id="app">
       <p>您刚才输入了：{{message}}</p>
       <input v-bind:msg="message" type="text" v-model="message">
@@ -46,5 +60,69 @@
           destroyed : function(){}        //销毁后
       });
     </script>
+    <script type="text/javascript">
+
+
+      //全局定义一个名为hello-world的组件
+      Vue.component("hello-world",{
+          data :function(){
+              return{
+                  message : "hello world!"
+              }
+          },
+          props : {
+              id : {
+                  type : "Number",
+                  default : 1,
+                  required : true
+              }
+          },
+          template : "",
+          beforeCreate : function(){},    
+          created : function(){},         
+          beforeMount : function(){},     
+          mounted : function(){},         
+          beforeUpdate : function(){},    
+          updated : function(){},         
+          activated : function(){},      
+          deactivated : function(){},     
+          beforeDestroy : function(){},   
+          destroyed : function(){}       
+      });
+
+      //在主入口使用hello-world组件
+      new Vue({
+          el : "#app"
+      })
+
+
+    </script>
+
+    <script type="text/javascript">
+
+        //定义子组件(目前还没初始化，只是以一个普通的js对象字面量形式存在)
+        var child = {
+            props : {},
+            data : function(){
+                return{}
+            },
+            template : '<div></div>'
+        };
+
+        //父组件
+        new Vue({
+            data : function(){
+                return{}
+            },
+            components : {
+                "my-child" : child
+            }
+        })
+
+    
+    </script>
+
+
+
   </body>
 </html>

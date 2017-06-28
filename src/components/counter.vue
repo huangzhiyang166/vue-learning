@@ -75,9 +75,8 @@ export default {
             if(max!=-1 && val>max){
                 e.target.value = oldVal;
                 this.setCurrentValue(max);
-                return this.$emit("max",max);
-            }
-            if(val<min){
+                this.$emit("max",max);
+            }else if(val<min){
                 if(allowZero){
                     e.target.value = oldVal;
                     this.setCurrentValue(0);
@@ -87,6 +86,9 @@ export default {
                     this.setCurrentValue(min);
                     this.$emit("min",min);
                 }
+            }else{
+                this.setCurrentValue(val);
+                this.$emit("countChange",val);
             }
         },
         onAdd : function(e){

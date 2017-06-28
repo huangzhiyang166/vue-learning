@@ -104,13 +104,8 @@ export default {
           let old_storage = ticket.storage;
           let storage = item.storage;
           let buy_up = ticket.buy_up;
-          if(storage==-1){
-            item["count"] = count;
-          }else if(old_storage==-1){
-            item["count"] = Math.min(storage,buy_up);
-          }else{
-            item["count"] = Math.min(storage,buy_up);
-          }
+          let buy_low = ticket.buy_low;
+          item["count"] = index==0 ? buy_low : 0;
           Vue.set(this.ticketList,index,Object.assign({},ticket,item));
         })
       })
@@ -126,7 +121,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/css/global.scss";
 @import "./assets/css/flex";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
