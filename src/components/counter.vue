@@ -44,10 +44,6 @@ export default {
         return{}
     },
     methods : {
-        setCurrentValue :function(val){
-            if(this.currentValue===val) return;
-            this.currentValue = val;
-        },
         onChange : function(e){
             var oldVal = this.value;
             var max = this.max * 1;
@@ -63,7 +59,6 @@ export default {
             }
             if(max!=-1 && val>max){
                 e.target.value = oldVal;
-                this.setCurrentValue(max);
                 this.$emit("max",max);
             }else if(val<min){
                 if(allowZero){
@@ -101,7 +96,6 @@ export default {
                     newVal = min;
                 }
             }
-            this.setCurrentValue(newVal);
             this.$emit("countChange",newVal);
         }
     }
