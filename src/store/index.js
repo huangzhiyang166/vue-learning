@@ -90,6 +90,11 @@ export default new Vuex.Store({
         }
     },
     mutations: {
+        changeCount : function(state,{index,count}){
+            let ticket = state.ticketList[index];
+            if(!ticket) return false;
+            ticket.count = count;
+        },
         setBookInfo : function(state,{list}){
             state.ticketList = list;
         },
