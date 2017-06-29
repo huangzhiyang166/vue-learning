@@ -31,6 +31,10 @@ export default {
             default : function(){
                 return{}
             }
+        },
+        index : {
+            type : Number,
+            default : -1
         }
     },
     data(){

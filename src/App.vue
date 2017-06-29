@@ -6,7 +6,7 @@
         </div>
       </div>
       <template v-if="!isLoading">
-        <ticket-item v-for="item in ticketList" :info="item" :key="item.index"></ticket-item>
+        <ticket-item v-for="item in ticketList" :info="item" :index="item.index" :key="item.index"></ticket-item>
       </template>
       <template v-else>
         <div style="height:300px; line-height:300px; text-align:center; color:#999">努力加载中...</div>

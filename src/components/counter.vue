@@ -2,7 +2,7 @@
   <div class="countBox">
       <div class="con">
         <span @click="onMinus" class="minu minuBtn btn">-</span>
-        <input type="number" @input="onInput" @change="onChange" placeholder="请输入数字" :value="currentValue" name="" id="" class="countInp">
+        <input type="number" @change="onChange" placeholder="请输入数字" :value="value" name="" id="" class="countInp">
         <span @click="onAdd" class="add addBtn btn">+</span>
       </div>
       <div v-if="buyLow!=0 || buyUp!=-1" class="tip">
@@ -41,25 +41,15 @@ export default {
         }
     },
     data : function(){
-        return{
-            currentValue : this.value
-        }
-    },
-    watch : {
-        "value" : function(newVal,oldVal){
-            this.setCurrentValue(newVal);
-        }
+        return{}
     },
     methods : {
         setCurrentValue :function(val){
             if(this.currentValue===val) return;
             this.currentValue = val;
         },
-        onInput : function(e){
-            //this.setCurrentValue(e.target.value);
-        },
         onChange : function(e){
-            var oldVal = this.currentValue;
+            var oldVal = this.value;
             var max = this.max * 1;
             var min = this.min * 1;
             var valStr = e.target.value;
@@ -68,7 +58,6 @@ export default {
             var reg = allowZero ? /^\d+$/ : /^[1-9][0-9]*$/;
             if(!reg.test(valStr)){
                 e.target.value = oldVal;
-                this.setCurrentValue(oldVal);
                 this.$emit("countChange",oldVal);
                 return;
             }
@@ -79,22 +68,19 @@ export default {
             }else if(val<min){
                 if(allowZero){
                     e.target.value = oldVal;
-                    this.setCurrentValue(0);
                     this.$emit("countChange",0);
                 }else{
                     e.target.value = oldVal;
-                    this.setCurrentValue(min);
                     this.$emit("min",min);
                 }
             }else{
-                this.setCurrentValue(val);
                 this.$emit("countChange",val);
             }
         },
         onAdd : function(e){
             var max = this.max * 1;
             var min = this.min * 1;
-            var val = this.currentValue * 1;
+            var val = this.value * 1;
             var newVal = val + 1;
             if(max!=-1 && newVal>max){
                 return this.$emit("max",val);
@@ -106,7 +92,7 @@ export default {
             var max = this.max * 1;
             var min = this.min * 1;
             var allowZero = this.allowZero;
-            var val = this.currentValue * 1;
+            var val = this.value * 1;
             var newVal = val - 1;
             if(newVal<min){
                 if(allowZero){
